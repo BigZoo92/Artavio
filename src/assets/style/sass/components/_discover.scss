@@ -1,0 +1,13 @@
+.discover{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .discover_wrap{
+        display: flex;
+        width: 50%;
+        background-color: $color_gris;
+    }
+}

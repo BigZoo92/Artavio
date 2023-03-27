@@ -1,0 +1,19 @@
+.hero{
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    h1{
+        position: absolute;
+        font-weight: 900;
+        font-size: clamp(2em, 8em, 8vw);
+        line-height: 1.2;
+        margin-left: -1vw;
+        b{
+            color: $color_violet;
+        }
+    }
+}

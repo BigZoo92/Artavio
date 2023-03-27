@@ -1,0 +1,58 @@
+header{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+        width: clamp(30px, 3vw, 50px);
+    }
+    h4{
+        font-size: clamp(1.5em, 2.5em, 2.5vw);
+        font-weight: 600;
+    }
+    .toggle{
+        width: clamp(30px, 3vw, 50px);
+        aspect-ratio: 4/1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+        .toggle_arm{
+            width: 100%;
+            height: clamp(2px, .5vw, 3px);
+            background-color: $color_violet;
+        }
+    }
+    nav{      
+        ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            li{
+                a{
+                    color: $color_noir;
+                    text-decoration: none;
+                    font-weight: 500;
+                    position: relative;
+                    padding-inline: 10px;
+                    border-right: 2px solid $color_noir;
+                    
+                }
+                &:nth-child(4){
+                    a{
+                        border-right: none;
+                        padding-right: 0px;  
+                    }
+                }
+                &:nth-child(1){
+                    a{
+                        padding-left: 0px;  
+                    }
+                }
+            }
+        }
+    }
+}
