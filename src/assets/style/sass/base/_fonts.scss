@@ -81,5 +81,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Signature Forest';
+    src: url('../fonts/SignatureForest.woff2') format('woff2'),
+        url('../fonts/SignatureForest.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 

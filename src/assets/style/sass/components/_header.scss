@@ -1,16 +1,22 @@
 header{
-    position: relative;
-    width: 100%;
+    position: fixed;
+    width: calc(100% - calc($marges * 2));
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+     background:
+    conic-gradient(from 90deg at 1px 1px,$color_beige 90deg,#e4dcff 0) 
+    0 /8.33333333333vw;
+    z-index: 8;
     .logo{
         width: clamp(30px, 3vw, 50px);
+        z-index: 11;
     }
     h4{
         font-size: clamp(1.5em, 2.5em, 2.5vw);
         font-weight: 600;
+        z-index: 11;
     }
     .toggle{
         width: clamp(30px, 3vw, 50px);
@@ -20,36 +26,117 @@ header{
         align-items: center;
         flex-direction: column;
         cursor: pointer;
+        z-index: 11;
         .toggle_arm{
+            transform-origin: 40% 40%;
             width: 100%;
             height: clamp(2px, .5vw, 3px);
             background-color: $color_violet;
+            transition: all cubic-bezier(0.65, -0.59, 0.37, 1.69) .5s;
         }
     }
     nav{      
+        width: 100%;
+        z-index: 10;
+        display: flex;
+        padding-inline: $marges;
+        align-items: center;
+        align-items: flex-end;
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        background-color: $color_violet;
+        background:
+        conic-gradient(from 90deg at 1px 1px,$color_noir 90deg,#1e1a2a 0) 
+        0 /8.33333333333vw;
+        @for $i from 1 through 12 {
+            --panel-bottom-#{i}: 0%;
+        }
+        --panel-bottom-1: 0%;
+        --panel-bottom-2: 0%;
+        --panel-bottom-3: 0%;
+        --panel-bottom-4: 0%;
+        --panel-bottom-5: 0%;
+        --panel-bottom-6: 0%;
+        --panel-bottom-7: 0%;
+        --panel-bottom-8: 0%;
+        --panel-bottom-9: 0%;
+        --panel-bottom-10: 0%;
+        --panel-bottom-11: 0%;
+        --panel-bottom-12: 0%;
+        clip-path: polygon(0 0,
+        0 var(--panel-bottom-1),
+        calc(100% / 12) var(--panel-bottom-1),
+        calc(100% / 12) 0,
+        calc(100% / 12) 0,
+        calc(100% / 12) var(--panel-bottom-2),
+        calc(calc(100% / 12) * 2) var(--panel-bottom-2),
+        calc(calc(100% / 12) * 2) 0,
+        calc(calc(100% / 12) * 2) 0,
+        calc(calc(100% / 12) * 2) var(--panel-bottom-3),
+        calc(calc(100% / 12) * 3) var(--panel-bottom-3),
+        calc(calc(100% / 12) * 3) 0,
+        calc(calc(100% / 12) * 3) 0,
+        calc(calc(100% / 12) * 3) var(--panel-bottom-4),
+        calc(calc(100% / 12) * 4) var(--panel-bottom-4),
+        calc(calc(100% / 12) * 4) 0,
+        calc(calc(100% / 12) * 4) 0,
+        calc(calc(100% / 12) * 4) var(--panel-bottom-5),
+        calc(calc(100% / 12) * 5) var(--panel-bottom-5),
+        calc(calc(100% / 12) * 5) 0,
+        calc(calc(100% / 12) * 5) 0,
+        calc(calc(100% / 12) * 5) var(--panel-bottom-6),
+        calc(calc(100% / 12) * 6) var(--panel-bottom-6),
+        calc(calc(100% / 12) * 6) 0,
+        calc(calc(100% / 12) * 6) 0,
+        calc(calc(100% / 12) * 6) var(--panel-bottom-7),
+        calc(calc(100% / 12) * 7) var(--panel-bottom-7),
+        calc(calc(100% / 12) * 7) 0,
+        calc(calc(100% / 12) * 7) 0,
+        calc(calc(100% / 12) * 7) var(--panel-bottom-8),
+        calc(calc(100% / 12) * 8) var(--panel-bottom-8),
+        calc(calc(100% / 12) * 8) 0,
+        calc(calc(100% / 12) * 8) 0,
+        calc(calc(100% / 12) * 8) var(--panel-bottom-9),
+        calc(calc(100% / 12) * 9) var(--panel-bottom-9),
+        calc(calc(100% / 12) * 9) 0,
+        calc(calc(100% / 12) * 9) 0,
+        calc(calc(100% / 12) * 9) var(--panel-bottom-10),
+        calc(calc(100% / 12) * 10) var(--panel-bottom-10),
+        calc(calc(100% / 12) * 10) 0,
+        calc(calc(100% / 12) * 10) 0,
+        calc(calc(100% / 12) * 10) var(--panel-bottom-11),
+        calc(calc(100% / 12) * 11) var(--panel-bottom-11),
+        calc(calc(100% / 12) * 11) 0,
+        calc(calc(100% / 12) * 11) 0,
+        calc(calc(100% / 12) * 11) var(--panel-bottom-12),
+        100% var(--panel-bottom-12),
+        100% 0
+        );
         ul{
+            padding-bottom: 5vw;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 2.5vw;
             li{
                 a{
-                    color: $color_noir;
                     text-decoration: none;
-                    font-weight: 500;
-                    position: relative;
-                    padding-inline: 10px;
-                    border-right: 2px solid $color_noir;
-                    
-                }
-                &:nth-child(4){
-                    a{
-                        border-right: none;
-                        padding-right: 0px;  
+                    color: $color_beige;
+                    font-weight: 900;
+                    font-size: clamp(2em, 5em, 5vw);
+                    left: -0.5vw;
+                    opacity: .8;
+                    transition: opacity 0.3s ease;
+                    b{
+                        color: $color_violet;
+                        opacity: .7;
+                        transition: opacity 0.3s ease;
                     }
-                }
-                &:nth-child(1){
-                    a{
-                        padding-left: 0px;  
+                    &:hover{
+                        opacity: 1;
+                        b{
+                            opacity: 1;
+                        }
                     }
                 }
             }

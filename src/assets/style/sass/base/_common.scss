@@ -21,9 +21,38 @@ body{
 
 #root{
   margin-inline: $marges;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6{
   font-family: 'TT Runs Trial';
+}
+
+button{
+  background: none;
+  border: 1.5px solid $color_violet;
+  color: $color_beige;
+  padding-block: 5%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  &::before{
+    content: "";
+    position: absolute;
+    width: 160%;
+    height: 100%;
+    background-color: $color_violet;
+    top: 0;
+    left: -160%;
+    opacity: .4;
+    clip-path: polygon(0 0, 63% 0, 100% 100%, 0% 100%);
+
+    transition: all ease-in-out .425s;
+  }
+  &:hover{
+    &::before{
+      left: 0;
+    }
+  }
 }
 

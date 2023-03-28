@@ -1,13 +1,17 @@
-import React from 'react'
 import HeroHome from '../Components/HeroHome'
-import Discover from '../Components/Discover'
+import Artwork from '../Components/Artwork'
+import { QueryClient, QueryClientProvider} from 'react-query';
+
+const queryClient = new QueryClient();
 
 function Home() {
     return (
-        <React.Fragment>
+        <main>
             <HeroHome />
-            <Discover />
-        </React.Fragment>
+            <QueryClientProvider client={queryClient}>
+                <Artwork />
+            </QueryClientProvider>
+        </main>
     )
 }
  
