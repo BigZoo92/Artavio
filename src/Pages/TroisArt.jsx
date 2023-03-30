@@ -1,9 +1,14 @@
-function TroisArt() {
+import HeroTrois from "../Components/HeroTrois"
+import TroisGallery from "../Components/TroisGallery"
+
+function HeroHome() {
     return (
         <main>
-            <h1>3D Art</h1>
+            <HeroTrois />
+            
+            <TroisGallery />
         </main>
     )
 }
- 
-export default TroisArt
+
+export default HeroHome

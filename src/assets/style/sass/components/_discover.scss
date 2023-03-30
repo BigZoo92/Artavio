@@ -1,11 +1,11 @@
-.discover{
-    width: 100%;
+.discover3d{
+    width: $width;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    .discover_wrap{
+    .discover3d_wrap{
         display: flex;
         width: calc(100vw - calc($marges * 6));
         aspect-ratio: 10/6;
@@ -28,7 +28,7 @@
                 height: inherit;
             }
         }
-        .discover_info{
+        .discover3d_info{
             padding: 10%;
             height: 100%;
             display: flex;
@@ -36,9 +36,8 @@
             flex-direction: column;
             color:$color_beige;
             font-size: clamp(0.8em, 1.2vw, 1.25em);
-            .signature{
-                font-family: 'Signature Forest';
-                font-size: clamp(1.2em, 2.5vw, 2.5em);
+            button{
+                color: $color_beige;
             }
         }
     }

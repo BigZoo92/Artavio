@@ -20,22 +20,26 @@ function Header() {
         }
         };
     return (
-        <header>
-            <img src={logo} alt="logo" className='logo'/>
-            <h4>Artavio</h4>
-            <div className='toggle' onClick={handleClick}>
-                <div className='toggle_arm'></div>
-                <div className='toggle_arm'></div>
+        <React.Fragment>
+            <div className='header_fix'>
+                <img src={logo} alt="logo" className='logo'/>
+                <h4>Artavio</h4>
+                <div className='toggle' onClick={handleClick}>
+                    <div className='toggle_arm'></div>
+                    <div className='toggle_arm'></div>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/3d_art'>3D <b>Art</b></Link></li>
-                    <li><Link to='/experimental_art'>Experimental <b>Art</b></Link></li>
-                    <li><Link to='/cultural_art'>Cultural <b>Art</b></Link></li>
-                </ul>
-            </nav>
-        </header>
+            <header>
+                <nav>
+                    <ul>
+                        <li onClick={handleClick}><Link to='/'>Home</Link></li>
+                        <li onClick={handleClick}><Link to='/3d_art'>3D <b>Art</b></Link></li>
+                        <li onClick={handleClick}><Link to='/experimental_art'>Experimental <b>Art</b></Link></li>
+                        <li onClick={handleClick}><Link to='/cultural_art'>Cultural <b>Art</b></Link></li>
+                    </ul>
+                </nav>
+            </header>
+        </React.Fragment>
     )
 }
 

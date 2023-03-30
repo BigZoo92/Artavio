@@ -2,7 +2,7 @@
 function HeroHome() {
     return (
         <section className='hero'>
-            <h1>Naviguez dans <b>l'art</b></h1>
+            <h1>Imagine <b>Art</b> Differently</h1>
         </section>
     )
 }
