@@ -27,6 +27,7 @@
     .suggestion_cd{
         width: 100%;
         display: flex;
+        padding-bottom: $marges;
         align-items: stretch;
         gap: calc($marges * 2);
         @media (max-width: 900px) {
@@ -49,8 +50,12 @@
                 object-fit: cover;
             }
             button{
+                box-sizing: content-box;
                 width: 50%;
-                padding-block: 3%;
+                padding: 1.5% 4% 0% 5%;
+                svg{
+                    margin-bottom: -6px;
+                }
             }
         }
     }
