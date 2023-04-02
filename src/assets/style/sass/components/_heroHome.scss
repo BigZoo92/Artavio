@@ -39,8 +39,28 @@
         0 /8.33333333333vw;
     width: 100vw;
     margin-left: -$marges;
+    
     p, button, h1{
         margin-left: $marges;
         color: $color_beige;
+    }
+    p{
+        @media (max-width: 600px) {
+            width: calc($marges * 10);
+        }
+    }
+    button{
+        @media (max-width: 1600px) {
+            width: calc($marges * 2);
+        }
+        @media (max-width: 900px) {
+            width: calc($marges * 3);
+        }
+        @media (max-width: 600px) {
+            width: calc($marges * 4);
+        }
+    }
+    p, button{
+        font-size: clamp(0.75em, 1.5vw, 1.2em);
     }
 }
