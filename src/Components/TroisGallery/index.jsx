@@ -21,7 +21,6 @@ function TroisGallery() {
   if (!artworkThreeArtData) {
     return <div>Loading...</div>;
   }
-  console.log(artworkThreeArtData);
   return (
     <section className='trois_gallery_cd'>
       <Filter />

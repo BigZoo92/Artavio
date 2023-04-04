@@ -1,34 +1,71 @@
-aside{
-    background-color: $color_beige;
-    padding: calc($marges / 2.5);
-    padding-left: calc($marges * 1.5);
-    border-radius: 10px;
+aside {
+  background-color: $color_noir;
+  position: absolute;
+  z-index: 3;
+  width: calc($marges * 3);
+  display: flex;
+  flex-direction: column;
+  height: 100.5vh;
+  top: 0;
+  padding-bottom: calc($marges / 2.5);  
+  left: var(--left-aside-close);
+  opacity: .98;
+  justify-content: flex-end;
+  transition: all ease-in-out .425s;
+  @media (max-width: 900px) {
+        width: calc($marges * 5);
+    }
+    @media (max-width: 650px) {
+        width: calc($marges * 6);
+    }
+    @media (max-width: 475px) {
+        width: calc($marges * 8);
+    }
+  &.fixed {
     position: fixed;
-    z-index: 3;
-    width: calc($marges * 5);
-    display: flex;
-    flex-direction: column;
-    gap: calc($marges / 2);
-    height: calc(100vh - 100px);
-    bottom: calc(calc($marges / 2) * -1);
-    left: -$marges;
-    left: calc(calc($marges * 4) * -1);
-    opacity: .98;
+    top: 0;
+  }
     div{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: calc($marges / 3.75) calc($marges / 2.5) calc($marges / 3.75) calc($marges / 2.5);
+        transition: all ease 0.5s;
         cursor: pointer;
+        @media (max-width: 650px) {
+            padding: calc($marges / 2.5) calc($marges / 2.5) calc($marges / 2.5) calc($marges / 2.5);
+        }
         svg{
             fill: $color_violet;
             stroke: $color_violet;
             transform: scale(2);
+            transition: all ease 0.5s;
+            &:hover{
+                fill: $color_vert;
+                stroke: $color_vert;
+            }
         }
-        label{
-            font-weight: 600;
+        p{
+            font-size: clamp(0.8em, 1vw, 1em);
+            font-weight: 500;
+            color: $color_beige;
+            cursor: pointer;
         }
-        input{
-          margin: 0;
+        .input_radio{
+            width: clamp(10px, 1.25vw, 17.5px);
+            aspect-ratio: 1/1;
+            outline: 1.5px solid $color_beige;
+            border: 2.5px solid $color_noir;
+            background-color: $color_noir;
+            cursor: pointer;
+            transition: all ease 0.5s;
+
+        }
+        &:hover{
+            &:nth-of-type(n+2){
+                background-color: $color_violet;
+            }
         }
     }
 }
+

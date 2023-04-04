@@ -2,7 +2,21 @@ $color_gris: #B0B6BB;
 $color_noir: #0E0E0E;
 $color_violet: #8F7DCC;
 $color_beige: #fffdf7;
+$color_vert: #91fdad;
 
 $marges: calc(100vw / 12);
 $gap-gallery: 35px;
 $width: calc(100vw - calc($marges * 2));
+
+:root {
+    --left-aside-close: -17vw;
+    @media (max-width: 900px) {
+        --left-aside-close: -33.5vw;
+    }
+    @media (max-width: 650px) {
+        --left-aside-close: -41.5vw;
+    }
+    @media (max-width: 475px) {
+        width: calc($marges * 8);
+    }
+}
