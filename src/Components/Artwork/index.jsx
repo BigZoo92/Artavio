@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DiscoverExperimental from '../DiscoverExperimental';
+import BenchmarkButton from '../BenchmarkButton';
 
 const fetchArtwork = async () => {
   const response = await fetch(
@@ -59,7 +60,10 @@ const Artwork = () => {
             {artworkData.alt_description && <p>{artworkData.alt_description}</p>}
           {artworkData.description && <p>{artworkData.description}</p>}
           <p className='signature'>{artworkData.user.name}</p>
-          <button>3D Art</button>
+          <button>
+            Add
+            <BenchmarkButton id={artworkData.id} />
+          </button>
       </div>
       </div>
     </section>

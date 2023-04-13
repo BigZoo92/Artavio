@@ -33,9 +33,8 @@ function Header() {
                 <nav>
                     <ul>
                         <li onClick={handleClick}><Link to='/'>Home</Link></li>
-                        <li onClick={handleClick}><Link to='/3d_art'>3D <b>Art</b></Link></li>
-                        <li onClick={handleClick}><Link to='/experimental_art'>Experimental <b>Art</b></Link></li>
-                        <li onClick={handleClick}><Link to='/cultural_art'>Cultural <b>Art</b></Link></li>
+                        <li onClick={handleClick}><Link to='/3d_art'><b>Art</b>Gallery</Link></li>
+                        <li onClick={handleClick}><Link to='/cultural_art'>Book<b>Mark</b></Link></li>
                     </ul>
                 </nav>
             </header>

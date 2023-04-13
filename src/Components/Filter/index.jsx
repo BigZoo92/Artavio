@@ -1,7 +1,7 @@
 import { BiArrowBack, BiFilter } from 'react-icons/bi';
 import { useRef, useEffect, useState } from 'react';
 
-function Filter() {
+function Filter({updateSetTri}) {
   const filterRef = useRef(null);
   const [isFixed, setIsFixed] = useState(false);
   const [initialPosition, setInitialPosition] = useState(0);
@@ -13,14 +13,22 @@ function Filter() {
 };
 
   const handleSortItemClick = (index) => {
-    setSelectedSort(index);
-  }
+    if (selectedSort === index) {
+      setSelectedSort(null);
+    } else {
+      setSelectedSort(index);
+    }
+  };
+
+  useEffect(() => {
+    updateSetTri(selectedSort)
+  }, [updateSetTri, selectedSort]);
 
   useEffect(() => {
     const handleScroll = () => {
         const elementOffsetTop = filterRef.current.offsetTop;
         const elementHeight = filterRef.current.offsetHeight;
-        setIsFixed(window.pageYOffset >= elementOffsetTop + elementHeight);
+        setIsFixed(window.pageYOffset >= elementOffsetTop + elementHeight - 120);
     };
 
     setInitialPosition(filterRef.current.offsetTop);
@@ -87,32 +95,10 @@ function Filter() {
         onClick={() => handleSortItemClick(2)}
         style={{pointerEvents: isAsideOpen ? 'none' : 'all'}}
       >
-        <p>Sort by download</p>
-        <span 
-          className='input_radio'
-          style={{backgroundColor: selectedSort === 2 ? '#91fdad' : '#0E0E0E'}}
-        ></span>
-      </div>
-      <div 
-        className='filter_input' 
-        onClick={() => handleSortItemClick(3)}
-        style={{pointerEvents: isAsideOpen ? 'none' : 'all'}}
-      >
         <p>Sort by like</p>
         <span 
           className='input_radio'
-          style={{backgroundColor: selectedSort === 3 ? '#91fdad' : '#0E0E0E'}}
-        ></span>
-      </div>
-      <div 
-        className='filter_input' 
-        onClick={() => handleSortItemClick(4)}
-        style={{pointerEvents: isAsideOpen ? 'none' : 'all'}}
-      >
-        <p>Sort by view</p>
-        <span 
-          className='input_radio'
-          style={{backgroundColor: selectedSort === 4 ? '#91fdad' : '#0E0E0E'}}
+          style={{backgroundColor: selectedSort === 2 ? '#91fdad' : '#0E0E0E'}}
         ></span>
       </div>
     </aside>
