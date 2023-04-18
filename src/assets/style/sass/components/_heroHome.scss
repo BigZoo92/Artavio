@@ -1,23 +1,41 @@
 .hero{
     width: $width;
-    height: calc(100dvh - 100px);
     display: flex;
+    height: calc(calc(47.5vw - 5vh) + 100px);
     position: relative;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     overflow: hidden;
     flex-direction: column;
     gap: 1.5vw;
-
+    padding-top: calc(120px - 9vw);
     h1{
         font-weight: 900;
         text-align: left;
-        font-size: clamp(2em, 8em, 8vw);
+        width: calc($marges * 8);
         line-height: 1.2;
-        margin-top: 100px;
         margin-left: -1vw;
+        display: flex;
+        text-transform: capitalize;
+        flex-direction: column;
         b{
             color: $color_violet;
+            font-size: clamp(2em, 8vw, 8em);
+        }
+        i{
+            margin-left: calc($marges * 1);
+            font-size: clamp(1.9em, 8vw, 8vw);
+            font-family: 'TT Runs Black Outline';
+        }
+        span{
+            font-size: clamp(0.75em, 3.5vw, 3.5em);
+            &:nth-of-type(1){
+                margin-left: calc($marges * 2);
+                margin-bottom: .25em;
+            }
+            &:nth-of-type(2){
+                margin-left: calc($marges * 1);
+            }
         }
     }
     p{
@@ -34,11 +52,7 @@
 }
 
 .heroTrois{
-    background:
-        conic-gradient(from 90deg at 1px 1px,$color_noir 90deg,#1e1a2a 0) 
-        0 /8.33333333333vw;
-    width: 100vw;
-    margin-left: -$marges;
+
     border-bottom: 1px solid$color_violet;
     p, button, h1{
         margin-left: $marges;

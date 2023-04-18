@@ -10,6 +10,7 @@
     .logo{
         width: clamp(30px, 3vw, 50px);
         z-index: 11;
+        animation: rotateLogo 10s linear infinite;
     }
     h4{
         font-size: clamp(1.5em, 2.5em, 2.5vw);
@@ -127,21 +128,21 @@ header{
                     font-weight: 900;
                     font-size: clamp(2em, 5em, 5vw);
                     left: -0.5vw;
-                    opacity: .8;
-                    transition: opacity 0.3s ease;
+                    transition: opacity 0.5s ease;
                     b{
                         color: $color_violet;
-                        opacity: .7;
-                        transition: opacity 0.3s ease;
-                    }
-                    &:hover{
-                        opacity: 1;
-                        b{
-                            opacity: 1;
-                        }
                     }
                 }
             }
         }
+    }
+}
+
+@keyframes rotateLogo {
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 360deg;
     }
 }

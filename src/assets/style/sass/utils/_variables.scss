@@ -17,6 +17,6 @@ $width: calc(100vw - calc($marges * 2));
         --left-aside-close: -41.5vw;
     }
     @media (max-width: 475px) {
-        width: calc($marges * 8);
+        // width: calc($marges * 8);
     }
 }
