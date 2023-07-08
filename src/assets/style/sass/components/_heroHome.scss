@@ -5,10 +5,39 @@
     position: relative;
     justify-content: center;
     align-items: flex-end;
-    overflow: hidden;
     flex-direction: column;
     gap: 1.5vw;
     padding-top: calc(120px - 9vw);
+    
+    .imgHero{
+        position: absolute;
+        animation: clipDivHero 1s cubic-bezier(0.75, 0, 0.5, 1);
+        z-index: -1;
+        overflow: hidden;
+        transition: all 0.75s cubic-bezier(0.2, 0.2, 0.6, 1);
+        &:nth-of-type(1){
+            left: 0;
+            top: 175px;
+            img{
+                width: calc($marges * 3);
+                aspect-ratio: 10/12;
+            }
+        }
+        &:nth-of-type(2){
+            right: 0;
+            bottom: 25px;
+            img{
+                width: calc($marges * 3);
+                aspect-ratio: 3/2;
+            }
+        }
+        img{
+            filter: brightness(.5);
+            object-fit: cover;
+            transform: scale(0.9);
+            animation: clipImgHero 1s 0.25s  ease-in-out forwards;
+        }
+    }
     h1{
         font-weight: 900;
         text-align: left;
@@ -18,6 +47,7 @@
         display: flex;
         text-transform: capitalize;
         flex-direction: column;
+        mix-blend-mode: lighten;
         b{
             color: $color_violet;
             font-size: clamp(2em, 8vw, 8em);
@@ -51,17 +81,56 @@
     }
 }
 
-.heroTrois{
 
-    border-bottom: 1px solid$color_violet;
+@keyframes clipImgHero {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+
+.container_three{
+        width: calc($width);
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        canvas{
+            position: absolute;
+        }
+    }
+
+
+
+
+
+.heroTrois{
+    height: calc(calc(47.5vw - 5vh) + 100px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: calc(120px - 9vw);
+    width: 100vh;
+    max-width: $width;
+    gap: 1.5vw;
+    margin-left: -$marges;
+    h1{
+        font-size: clamp(2em, 8vw, 8em);
+        font-weight: 900;
+        b{
+            color: $color_violet;
+        }
+    }
     p, button, h1{
         margin-left: $marges;
         color: $color_beige;
     }
     p{
-        @media (max-width: 600px) {
-            width: calc($marges * 10);
-        }
+            width: calc($marges * 5);
+
     }
     button{
         @media (max-width: 1600px) {
@@ -75,6 +144,9 @@
         }
     }
     p, button{
-        font-size: clamp(0.75em, 1.5vw, 1.2em);
+        font-size: clamp(0.60em, 1vw, 1em);
+    }
+    button{
+        padding-block: clamp(0px, 2vw, 17.5px);
     }
 }

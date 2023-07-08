@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import GalleryArtwork from '../GalleryArtwork/GalleryArtwork';
 import Filter from '../Filter';
+import Artwork from '../Artwork'
+import { QueryClient, QueryClientProvider} from 'react-query';
+
+const queryClient = new QueryClient();
 
 function TroisGallery({datafetchArt}) {
   const location = useLocation();
@@ -76,15 +80,34 @@ function TroisGallery({datafetchArt}) {
   }
   
   return (
-    <section className='trois_gallery_cd'>
-      <Filter updateSetTri={updateSetTri} />
-      <article>
-        {sortedArtworkData.map((artworkThreeArtWork, index) => (
-          <GalleryArtwork  key={index} img={artworkThreeArtWork.urls.regular} desc={artworkThreeArtWork.alt_description} name={artworkThreeArtWork.user.name} id={artworkThreeArtWork.id} />
-        ))}
-      </article>
-    </section>
-  );
+  <section className='trois_gallery_cd'>
+    <Filter updateSetTri={updateSetTri} />
+    <article style={{display: sortedArtworkData.length === 0 ? 'flex' : 'grid'}}>
+      {sortedArtworkData.length === 0 ? (
+        <div className='bookmark_empty'>
+          <div className='bookmark_empty_txt'>
+            <h2>The Great Empty Canvas</h2>
+            <p>Paragraph: Oh dear, it seems your bookmark is empty! A blank canvas awaiting the masterpiece of your creativity. Fear not, for this is just the beginning of your artistic journey. Embrace the vastness of the void and let your imagination run wild. Remember, the greatest artists of all time started with a blank canvas, just like you. So, take a deep breath, grab your tools, and let the magic of inspiration guide you. Your next masterpiece is just a bookmark away.</p>
+          </div>
+          <QueryClientProvider client={queryClient}>
+            <Artwork />
+          </QueryClientProvider>
+        </div>
+      ) : (
+        sortedArtworkData.map((artworkThreeArtWork, index) => (
+          <GalleryArtwork
+            key={index}
+            img={artworkThreeArtWork.urls.regular}
+            desc={artworkThreeArtWork.alt_description}
+            name={artworkThreeArtWork.user.name}
+            id={artworkThreeArtWork.id}
+          />
+        ))
+      )}
+    </article>
+  </section>
+);
+
 }
 
 export default TroisGallery;

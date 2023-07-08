@@ -1,6 +1,5 @@
 
 .trois_gallery_cd{
-    width: 100%;
     min-height: 100vh;
     overflow: hidden;
     position: relative;
@@ -11,6 +10,7 @@
     article{
         width: $width;
         margin-left: $marges;
+        min-height: 100vh;
         padding-block: $gap-gallery;
         display: grid;
         grid-gap: $gap-gallery;
@@ -133,7 +133,17 @@
             
         }     
     }
+    .bookmark_empty{
+        display: flex;
+        flex-direction: column;
+        .bookmark_empty_txt{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
+
+
 
 @keyframes clip {
   0% {

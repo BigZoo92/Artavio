@@ -14,9 +14,6 @@
         text-align: left;
         align-self: flex-start;
         margin-left: -.3vw;
-        &:nth-of-type(2){
-            margin-top: $marges;
-        }
         @media (max-width: 900px) {
             margin-inline: calc(-.3vw + calc($marges * 2));
         }
