@@ -1,6 +1,7 @@
 import { fetchHero } from '../../assets/js/fetchHome';
 import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three'
+import MiniTriRing from '../MiniTriRing'
 
 
 function HeroHome() {
@@ -12,7 +13,6 @@ function HeroHome() {
 const alphaMapTexture = textureLoader.load('../../assets/Images/jpg/crystal_map.jpg');
 
   useEffect(() => {
-    console.log('wesh');
     const artHero = localStorage.getItem('artworkHero');
     if (artHero) {
       setArtworkHero(JSON.parse(artHero));
@@ -37,7 +37,7 @@ const alphaMapTexture = textureLoader.load('../../assets/Images/jpg/crystal_map.
         <span>your creativity</span>
         <span>to dream</span>
       </h1>
-
+        <MiniTriRing></MiniTriRing>
     </section>
   );
 }
