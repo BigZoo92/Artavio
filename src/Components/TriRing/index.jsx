@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const TriRing = () => {
@@ -100,8 +100,7 @@ const TriRing = () => {
       // Lissage de la rotation en utilisant une interpolation linéaire
       ring.rotation.x += (targetRotationX - ring.rotation.x) * rotationSpeed;
       ring.rotation.y += (targetRotationY - ring.rotation.y) * rotationSpeed;
-    
-    ring.position.y = Math.sin(time * frequency) * amplitude;
+      ring.position.y = Math.sin(time * frequency) * amplitude;
 
 
       time += 0.01;

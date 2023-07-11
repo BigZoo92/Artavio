@@ -1,16 +1,11 @@
 import { fetchHero } from '../../assets/js/fetchHome';
 import { useState, useEffect, useRef } from 'react';
-import * as THREE from 'three'
 import MiniTriRing from '../MiniTriRing'
 
 
 function HeroHome() {
   const [artworkHero, setArtworkHero] = useState(JSON.parse(localStorage.getItem('artworkHero')));
   const imagesRef = useRef([]);
-  const canvasRef = useRef(null);
-
-   const textureLoader = new THREE.TextureLoader();
-const alphaMapTexture = textureLoader.load('../../assets/Images/jpg/crystal_map.jpg');
 
   useEffect(() => {
     const artHero = localStorage.getItem('artworkHero');
@@ -22,7 +17,9 @@ const alphaMapTexture = textureLoader.load('../../assets/Images/jpg/crystal_map.
         localStorage.setItem('artworkHero', JSON.stringify(data));
       });
     }
+    
   }, []);
+  
 
   return (
     <section className='hero'>
@@ -31,13 +28,14 @@ const alphaMapTexture = textureLoader.load('../../assets/Images/jpg/crystal_map.
           <img src={artworksHero.urls.regular} title={artworksHero.user.name} alt={artworksHero.alt_description} />
         </div>
       ))}
+      <MiniTriRing></MiniTriRing>
       <h1>
         <b>Art</b>
         <i>Awakens</i>
         <span>your creativity</span>
         <span>to dream</span>
       </h1>
-        <MiniTriRing></MiniTriRing>
+        
     </section>
   );
 }
