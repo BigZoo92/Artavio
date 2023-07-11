@@ -1,4 +1,3 @@
-import { logDOM } from '@testing-library/react';
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
@@ -72,44 +71,40 @@ const MiniTriRing = () => {
 
 
     const rings = []; 
+    const positions = [
+      {x: -5, y: -2},
+      {x: 5, y: -2},
+      {x: 5, y: 2},
+      {x: -5, y: 2},
+      {x: -4, y: -1.15},
+      {x: 4, y: -1.15},
+      {x: -4, y: 1.15},
+      {x: 4, y: 1.15},
+    ]
 
-for (let index = 0; index < 10; index++) {
+for (let index = 0; index < 8; index++) {
   const size = Math.random() * 1; // Taille aléatoire entre 0.1 et 1
   const weight = size/3.5;
-  const centerZoneWidth = 10; // Largeur de la zone centrale à éviter
-const centerZoneHeight = centerZoneWidth; // Hauteur de la zone centrale à éviter
-  console.log(size);
-  let posX, posY, posZ;
-
-  // Génère une position aléatoire en évitant la zone centrale
-  do {
-    posX = Math.random() * 10 - 5; // Position aléatoire entre -5 et 5 sur l'axe x
-    posY = Math.random() * 10 - 5; // Position aléatoire entre -5 et 5 sur l'axe y
-    posZ = Math.random() * 10 - 5; // Position aléatoire entre -5 et 5 sur l'axe z
-  } while (
-    posX > -centerZoneWidth / 2 &&
-    posX < centerZoneWidth / 2 &&
-    posY > -centerZoneHeight / 2 &&
-    posY < centerZoneHeight / 2
-  );
 
   const geometry = new THREE.TorusGeometry(size, weight, 15, 3, arc);
   const ring = new THREE.Mesh(geometry, material);
   ring.rotation.z = 0.5;
-  ring.position.set(posX, posY, posZ); // Définit la position aléatoire
-  scene.add(ring);
+  ring.position.x = positions[index].x
   rings.push(ring); // Ajoute le ring au tableau
 }
 
+for (const ring of rings){
+  scene.add(ring)
+}
   // Animation de rotation
   const animate = () => {
     requestAnimationFrame(animate);
-
+   
     // Parcourt tous les rings et applique la rotation
-    rings.forEach((ring) => {
+    rings.forEach((ring, index) => {
       ring.rotation.x += (targetRotationX - ring.rotation.x) * rotationSpeed;
       ring.rotation.y += (targetRotationY - ring.rotation.y) * rotationSpeed;
-      ring.position.y = Math.sin(time * frequency) * amplitude;
+      ring.position.y = Math.sin(time * frequency) * amplitude + positions[index].y;
     });
 
     time += 0.01;
@@ -120,6 +115,7 @@ const centerZoneHeight = centerZoneWidth; // Hauteur de la zone centrale à évi
     // Lance l'animation
     animate();
 
+
     // Nettoie la scène lors du démontage du composant
         return () => {
     rings.forEach((ring) => {
@@ -128,7 +124,7 @@ const centerZoneHeight = centerZoneWidth; // Hauteur de la zone centrale à évi
       
       renderer.dispose();
     };
-  }, [arc]);
+  }, []);
 
   return (
     <div ref={canvasRef} className="container_three" />
