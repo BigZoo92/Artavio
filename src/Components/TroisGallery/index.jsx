@@ -26,7 +26,6 @@ function TroisGallery({datafetchArt}) {
       console.log(JSON.parse(artworkThreeArt));
     } else if (location.pathname === "/bookmark") {
       artworkThreeArt = localStorage.getItem('bookmarkData');
-      
     }
     if (artworkThreeArt) {
       setArtworkThreeArtData(JSON.parse(artworkThreeArt));
@@ -78,7 +77,6 @@ function TroisGallery({datafetchArt}) {
   if (!sortedArtworkData) {
     return <div>Loading...</div>;
   }
-  console.log(sortedArtworkData);
   
   return (
   <section className='trois_gallery_cd'>

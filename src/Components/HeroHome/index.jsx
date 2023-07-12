@@ -8,9 +8,8 @@ function HeroHome() {
   const imagesRef = useRef([]);
 
   useEffect(() => {
-    const artHero = localStorage.getItem('artworkHero');
-    if (artHero) {
-      setArtworkHero(JSON.parse(artHero));
+    if (artworkHero) {
+      return
     } else {
       fetchHero().then(data => {  
         setArtworkHero(data);
@@ -18,8 +17,9 @@ function HeroHome() {
       });
     }
     
-  }, []);
+  }, [artworkHero]);
   
+
 
   return (
     <section className='hero'>

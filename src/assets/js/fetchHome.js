@@ -1,4 +1,5 @@
 const fetchThree = async () => {
+  console.log('wesh');
   const response = await fetch(
     "https://api.unsplash.com/photos/random?query=3d&count=3&client_id=VDtUKQt4G1bdWXHoJuUFCDe68SeWFDrfCsC3w0u-31U"
   );

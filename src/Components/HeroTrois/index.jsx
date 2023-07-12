@@ -20,10 +20,10 @@ function HeroTrois() {
 
     return (
         <section className='heroTrois' ref={sectionRef}>
+            <TriRing sectionRef={sectionRef.current}/>
             <h1 dangerouslySetInnerHTML={{ __html: titre }} />
             <p>{paragraphe}</p>
             <button>Discover</button>
-                  <TriRing sectionRef={sectionRef.current}/>
         </section>
     )
 }
