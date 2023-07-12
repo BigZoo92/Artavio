@@ -1,4 +1,3 @@
-import { logDOM } from '@testing-library/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'react-use';
 import * as THREE from 'three';
@@ -150,7 +149,7 @@ const TriRing = (sectionRef) => {
       scene.remove(ring);
       renderer.dispose();
     };
-  }, [height, width]);
+  }, [height, width, arc]);
 
   return (
     <canvas ref={canvasRef} className="container_three" width={width}></canvas>

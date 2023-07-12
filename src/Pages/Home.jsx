@@ -7,7 +7,7 @@ const queryClient = new QueryClient();
 function Home() {
     return (
         <main>
-            <HeroHome />
+            <HeroHome/>
             <QueryClientProvider client={queryClient}>
                 <Artwork />
             </QueryClientProvider>

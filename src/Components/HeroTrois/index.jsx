@@ -23,7 +23,6 @@ function HeroTrois() {
             <TriRing sectionRef={sectionRef.current}/>
             <h1 dangerouslySetInnerHTML={{ __html: titre }} />
             <p>{paragraphe}</p>
-            <button>Discover</button>
         </section>
     )
 }

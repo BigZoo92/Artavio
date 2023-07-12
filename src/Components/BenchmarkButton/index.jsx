@@ -7,6 +7,7 @@ function BenchmarkButton({id}) {
   });
 
   useEffect(() => {
+    console.log(bookmark);
     localStorage.setItem('bookmark', JSON.stringify(bookmark));
   }, [bookmark]);
 

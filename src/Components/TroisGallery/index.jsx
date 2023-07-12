@@ -5,6 +5,7 @@ import Filter from '../Filter';
 import Artwork from '../Artwork'
 import { QueryClient, QueryClientProvider} from 'react-query';
 
+
 const queryClient = new QueryClient();
 
 function TroisGallery({datafetchArt}) {
@@ -18,33 +19,32 @@ function TroisGallery({datafetchArt}) {
   function updateSetTri(sortValue) {
     setSelectTri(sortValue);
   }
-  
+
   useEffect(() => {
     let artworkThreeArt = false
     if (location.pathname === "/3d_art") {
       artworkThreeArt = localStorage.getItem('artworkThreeArt');
-      console.log(JSON.parse(artworkThreeArt));
     } else if (location.pathname === "/bookmark") {
-      artworkThreeArt = localStorage.getItem('bookmarkData');
+      artworkThreeArt = localStorage.getItem('bookmark');
     }
-    if (artworkThreeArt) {
+    if (location.pathname === "/3d_art" && artworkThreeArt) {
       setArtworkThreeArtData(JSON.parse(artworkThreeArt));
       setArtworkAllData(JSON.parse(artworkThreeArt));
       setSortedArtworkData(JSON.parse(artworkThreeArt));
     } else {
+      
       datafetchArt.then(data => {
+        
         setArtworkThreeArtData(data);
         setArtworkAllData(data);
         setSortedArtworkData(data);
         if (location.pathname === "/3d_art") {
           localStorage.setItem('artworkThreeArt', JSON.stringify(data));
-        } else if (location.pathname === "/bookmark") {
-          localStorage.setItem('bookmarkData', JSON.stringify(data));
-        }
+        } 
         
       });
     }
-    console.log(JSON.parse(artworkThreeArt));
+
   }, [datafetchArt, location.pathname]);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ function TroisGallery({datafetchArt}) {
   if (!sortedArtworkData) {
     return <div>Loading...</div>;
   }
-  
+
   return (
   <section className='trois_gallery_cd'>
     <Filter updateSetTri={updateSetTri} />
@@ -85,8 +85,8 @@ function TroisGallery({datafetchArt}) {
       {sortedArtworkData.length === 0 ? (
         <div className='bookmark_empty'>
           <div className='bookmark_empty_txt'>
-            <h2>The Great Empty Canvas</h2>
-            <p>Paragraph: Oh dear, it seems your bookmark is empty! A blank canvas awaiting the masterpiece of your creativity. Fear not, for this is just the beginning of your artistic journey. Embrace the vastness of the void and let your imagination run wild. Remember, the greatest artists of all time started with a blank canvas, just like you. So, take a deep breath, grab your tools, and let the magic of inspiration guide you. Your next masterpiece is just a bookmark away.</p>
+            <h2>Oh dear, it seems your bookmark is empty!</h2>
+            <p>A blank canvas awaiting the masterpiece of your creativity. Fear not, for this is just the beginning of your artistic journey. Embrace the vastness of the void and let your imagination run wild. Remember, the greatest artists of all time started with a blank canvas, just like you. So, take a deep breath, grab your tools, and let the magic of inspiration guide you. Your next masterpiece is just a bookmark away.</p>
           </div>
           <QueryClientProvider client={queryClient}>
             <Artwork />

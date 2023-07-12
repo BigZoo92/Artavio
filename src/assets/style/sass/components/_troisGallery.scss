@@ -143,7 +143,24 @@
     }
 }
 
-
+.bookmark_empty_txt{
+    height: calc(47.5vw - 5vh + 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5vw;
+    h2{
+        font-size: clamp(1.25em, 5vw, 5em);
+        font-weight: bold;
+        color: $color_violet;
+    }
+    p{
+        text-align: justify;
+        font-size: clamp(0.75em, 1.25vw, 1.15em);
+        line-height: 1.7;
+        letter-spacing: 1.25px;
+    }
+}
 
 @keyframes clip {
   0% {
