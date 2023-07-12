@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import TriRing from '../TriRing';
 
@@ -6,6 +6,7 @@ function HeroTrois() {
     const location = useLocation();
     const [titre, setTitre] = useState("");
     const [paragraphe, setParagraphe] = useState("");
+    const sectionRef = useRef(null)
 
     useEffect(() => {
         if (location.pathname === "/bookmark") {
@@ -18,11 +19,11 @@ function HeroTrois() {
     }, [location.pathname]);
 
     return (
-        <section className='heroTrois'>
+        <section className='heroTrois' ref={sectionRef}>
             <h1 dangerouslySetInnerHTML={{ __html: titre }} />
             <p>{paragraphe}</p>
             <button>Discover</button>
-                  <TriRing/>
+                  <TriRing sectionRef={sectionRef.current}/>
         </section>
     )
 }

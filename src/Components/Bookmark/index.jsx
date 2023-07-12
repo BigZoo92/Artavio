@@ -27,8 +27,13 @@ function TroisGallery() {
         localStorage.setItem('artworkThreeArt', JSON.stringify(data));
       });
     }
-    
   }, []);
+  fetchArt().then(data => {
+        setArtworkThreeArtData(data);
+        setArtworkAllData(data);
+        setSortedArtworkData(data);
+        localStorage.setItem('artworkThreeArt', JSON.stringify(data));
+      });
 
   useEffect(() => {
    

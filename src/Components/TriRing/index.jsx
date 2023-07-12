@@ -1,18 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import { logDOM } from '@testing-library/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useWindowSize } from 'react-use';
 import * as THREE from 'three';
 
-const TriRing = () => {
+const TriRing = (sectionRef) => {
   const canvasRef = useRef(null);
   const arc = Math.PI * 2
+  const { width } = useWindowSize()
+  const [height, setHeight] = useState(0)
+
+   useEffect(() => {
+    if(!sectionRef.sectionRef) return
+    setHeight(sectionRef.sectionRef.offsetHeight)
+   }, [sectionRef])
 
   useEffect(() => {
+
+    console.log(height);
     // Crée la scène
     const scene = new THREE.Scene();
 
     // Crée la caméra
     const camera = new THREE.PerspectiveCamera(
       75,
-      canvasRef.current.clientWidth / canvasRef.current.clientHeight,
+      width / height,
       0.1,
       1000
     );
@@ -21,13 +32,12 @@ const TriRing = () => {
     camera.position.x = -2.75;
 
     // Crée le rendu
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true, antialias: true });
     renderer.setSize(
-      canvasRef.current.clientWidth,
-      canvasRef.current.clientHeight
+      width,
+      height
     );
     renderer.setClearColor(0x000000, 0); // Définit la couleur de fond du canvas comme transparent
-    canvasRef.current.appendChild(renderer.domElement);
     
         
     const geometry = new THREE.TorusGeometry( 1.75, 0.5, 15, 3,  arc); 
@@ -88,6 +98,27 @@ const TriRing = () => {
       // Conversion de la différence en valeurs de rotation
       targetRotationX = (diffY / windowCenterY) * maxRotation;
       targetRotationY = (diffX / windowCenterX) * maxRotation;
+
+      const mouseX = event.clientX / window.innerWidth;
+        const mouseY = event.clientY / window.innerHeight;
+
+        light.position.set(
+          (mouseX - 0.5) * 10,
+          (mouseY - 0.5) * 10,
+          2
+        );
+
+        secondlight.position.set(
+          (mouseX - 0.3) * 10 + 50,
+          (mouseY - 0.5) * 10 + 50,
+          2
+        );
+
+        thirdlight.position.set(
+          (mouseX - 0.5) * 10 - 50,
+          (mouseY - 0.5) * 10 - 50,
+          2
+        );
     };
 
     // Ajoute l'événement de mouvement de la souris
@@ -119,10 +150,10 @@ const TriRing = () => {
       scene.remove(ring);
       renderer.dispose();
     };
-  }, []);
+  }, [height, width]);
 
   return (
-    <div ref={canvasRef} className="container_three" />
+    <canvas ref={canvasRef} className="container_three" width={width}></canvas>
   );
 };
 

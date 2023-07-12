@@ -78,6 +78,7 @@ function TroisGallery({datafetchArt}) {
   if (!sortedArtworkData) {
     return <div>Loading...</div>;
   }
+  console.log(sortedArtworkData);
   
   return (
   <section className='trois_gallery_cd'>
